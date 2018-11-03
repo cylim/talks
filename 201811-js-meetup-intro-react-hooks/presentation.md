@@ -25,6 +25,14 @@ theme: Next, 8
 
 ---
 
+# Why React?
+
+^ Shadow DOM
+^ Reusable Components
+^ Similar structure for React and React Native
+
+---
+
 # React Hooks[^1]
 
 ^ Not going to cover
