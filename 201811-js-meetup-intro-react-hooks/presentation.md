@@ -50,4 +50,11 @@ theme: Next, 8
 
 ---
 
+# Free Resources
+
+[^1]: [THE ROAD TO LEARN REACT](https://roadtoreact.com/course-details?courseId=THE_ROAD_TO_LEARN_REACT)
+[^2]: [React Hooks](https://egghead.io/playlists/react-hooks-and-suspense-650307f2)
+
+---
+
 # Questions
