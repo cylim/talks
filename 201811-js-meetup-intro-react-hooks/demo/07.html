@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Shuffle input</title>
+</head>
+<body>
+  <form>
+    <div  id="form">
+      <div class="form-group">
+        <label for="name">name</label>
+        <input type="text" class="form-control" id="name" />
+      </div>
+      <div class="form-group">
+        <label for="email">email</label>
+        <input type="email" class="form-control" id="email" />
+      </div>
+      <div class="form-group">
+        <label for="age">age</label>
+        <input type="number" class="form-control" id="age" />
+      </div>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script type="text/javascript">
+    var list = document.getElementById("form");
+    function shuffleNodes() {
+        var nodes = list.children, i = 0;
+        nodes = Array.prototype.sort.call(nodes);
+        while(i < nodes.length) {
+           list.appendChild(nodes[i]);
+           ++i;
+        }
+    }
+
+    setInterval(() => {
+      shuffleNodes()
+    }, 2000);
+  </script>
+</body>
+</html>
