@@ -26,7 +26,8 @@ theme: Next, 8
 
 ^ freelancer
 ^ small scale, fast feedback
-^ Orchestration won't be part of this topic
+^ Client doesn't know the value
+^ Show the basic
 
 ---
 
@@ -37,8 +38,8 @@ theme: Next, 8
 
 ^ Q: know CI pipelines
 ^ Q: use CI pipelines
-^ We have to go thru a few simple terminology
 ^ Remember old practices
+^ We have to go thru a few simple terminology
 ^ This is not the official description for it
 
 ![inline](ci-circle.png)![inline](ci-jenkins.png)![inline](ci-travis.png)![inline](ci-gitlab.png)
@@ -50,6 +51,7 @@ theme: Next, 8
 1. Run a services for each pull request[^1]
 2. Run a comprehensive test with docker local database[^2]
 3. Orchestration
+4. Basic Dockerfile
 
 
 ^ It is not my business requirement
@@ -79,6 +81,27 @@ theme: Next, 8
 
 ---
 
+## Basic Dockerfile
+
+```
+FROM cylim/alpine-node:latest
+LABEL MAINTAINER=cylim
+
+EXPOSE 8080
+WORKDIR /exampleapp
+
+COPY . .
+
+RUN  yarn && yarn build 
+
+CMD node dist/server.js
+```
+
+^ there are a few issues in this Dockerfile, not going into it for this talks
+^ e.g. COPY should separated into two steps
+^ hash layer
+
+---
 
 ## Basic Configuration
 
@@ -149,6 +172,8 @@ variables:
 ## Example for using Gitlab Registry
 
 ![inline](access-token.png)
+
+^ If you want a free private registry
 
 ---
 

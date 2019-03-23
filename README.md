@@ -4,15 +4,16 @@ If you’re interested in having me speak at an event you are organizing, please
 
 ## Upcoming Talks
 
-| Date              | Title                               | Event                             | Location    |
-| -----------       | -----                               | -----                             | --------    |
-| 23 March 2019     | To be determined                    | [Docker Bday][7]                  | @CAT Penang |
+| Date              | Title                                | Event                             | Location    |
+| -----------       | -----                                | -----                             | --------    |
+| N/A    | N/A                       | N/A               | N/A |
 
 
 ## Past Talks
 
 | Date              | Title                                | Event                             | Location    |
 | -----------       | -----                                | -----                             | --------    |
+| 23 March 2019     | CI with Docker                       | [Docker Bday #6][7]               | @CAT Penang |
 | 14 November 2018	| [Intro to React & Hooks][6]          | [Ruby Tuesday + JS Penang #5][4]  | @CAT Penang |
 | 9 October 2018    | [Brief intro to Socket.io][5]        | [Ruby Tuesday + JS Penang #4][2]  | @CAT Penang |
 | 14 August 2018    | Brief intro to SPA                   | [Ruby Tuesday + JS Penang #2][1]  | @CAT Penang |
