@@ -62,6 +62,23 @@ theme: Next, 8
 
 ---
 
+## What else I can do?
+
+1. Run a services for each pull request[^4]
+2. Run a comprehensive test with docker local database[^5]
+
+#### *Not covered in today talks
+
+
+^ It is not my business requirement
+^ Good to have
+
+[^4]: [CI preconfigured variables](https://docs.gitlab.com/ee/ci/variables/) - CI_MERGE_REQUEST_ID
+
+[^5]: Need to seed the data every time but doesn't need to worry about dirty data
+
+---
+
 ## Basic Configuration
 
 
@@ -92,9 +109,9 @@ variables:
 ``` yaml
 .login_and_pull: &login_and_pull
   before_script:
-    - docker login -u gitlab-ci-token -p $CI_BUILD_TOKEN registry.gitlab.com
-    - echo Pulling Docker from latest image...
-    - set +e && docker pull $LATEST_IMAGE > /dev/null && set -e
+    - docker login -u gitlab-ci-token \
+      -p $CI_BUILD_TOKEN registry.gitlab.com
+    - docker pull $LATEST_IMAGE
 
 .push_to_server: &push_to_server
   script:
@@ -106,6 +123,31 @@ variables:
 ```
 
 ^ Some script for reusable
+
+---
+
+## Example for Using AWS ECR
+
+```yaml
+# AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables
+- aws ecr get-login --no-include-email --region $AWS_REGION
+- docker tag $IMAGE_TAG $ECR_IMAGE:$TAG
+- docker push $ECR_IMAGE:$TAG
+
+# Update Services
+- aws ecs register-task-definition \
+  --cli-input-json file://$TASK_DEF_FILE --region $AWS_REGION
+- aws ecs update-service --cluster $CLUSTER_NAME \
+  --service $SERVICE_NAME --task-definition $TASK_DEF_NAME \
+  --region $AWS_REGION
+
+```
+
+---
+
+## Example for using Gitlab Registry
+
+![inline](access-token.png)
 
 ---
 
@@ -134,10 +176,12 @@ build_staging:
 ```
 
 ^ Except and Only
+^ build_dev is just a showcase in this example
+^ Doesn't included Test and dynamic port deployment
 
 ---
 
-## Deployment[^4]
+## Deployment[^6]
 
 ``` yaml
 deploy_staging:
@@ -149,7 +193,7 @@ deploy_staging:
   <<: *push_to_server
 ```
 
-[^4]: [environment for paid user only](https://gitlab.com/help/ci/variables/README#limiting-environment-scopes-of-variables-premium)
+[^6]: [environment for paid user only](https://gitlab.com/help/ci/variables/README#limiting-environment-scopes-of-variables-premium)
 
 ---
 
@@ -172,23 +216,6 @@ deploy_production:
 
 ---
 
-## What else I can do?
-
-1. Run a services for each pull request[^5]
-2. Run a comprehensive test with docker local database[^6]
-
-#### *Not covered in today talks
-
-
-^ It is not my business requirement
-^ Good to have
-
-[^5]: [CI preconfigured variables](https://docs.gitlab.com/ee/ci/variables/) - CI_MERGE_REQUEST_ID
-
-[^6]: Need to seed the data every time but doesn't need to worry about dirty data
-
----
-
 ## What's next?
 
 1. Auto DevOps[^7]
@@ -203,4 +230,4 @@ deploy_production:
 
 ---
 
-# Questions?
+# 🥳
