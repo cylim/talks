@@ -45,39 +45,40 @@ theme: Next, 8
 
 ---
 
-## Why I choose Gitlab CI?
+## Not covered
 
-1. Free tier for private usage[^1]
-2. No need any extra manual setup[^2]
-3. Come with Gitlab repo
-4. In case if needed more minutes[^3]
-
-^ Q: Git repo
-
-[^1]: [Gitlab Pricing](https://about.gitlab.com/pricing/)
-
-[^2]: [Features Comparison](https://about.gitlab.com/pricing/gitlab-com/feature-comparison/)
-
-[^3]: [Install and Register your own runner](https://docs.gitlab.com/runner/register/index.html)
-
----
-
-## What else I can do?
-
-1. Run a services for each pull request[^4]
-2. Run a comprehensive test with docker local database[^5]
-
-#### *Not covered in today talks
+1. Run a services for each pull request[^1]
+2. Run a comprehensive test with docker local database[^2]
+3. Orchestration
 
 
 ^ It is not my business requirement
 ^ Good to have
 
-[^4]: [CI preconfigured variables](https://docs.gitlab.com/ee/ci/variables/) - CI_MERGE_REQUEST_ID
+[^1]: [CI preconfigured variables](https://docs.gitlab.com/ee/ci/variables/) - CI_MERGE_REQUEST_ID
 
-[^5]: Need to seed the data every time but doesn't need to worry about dirty data
+[^2]: seed the data, no dirty data
+
 
 ---
+
+## Why I choose Gitlab CI?
+
+1. Free tier for private usage[^3]
+2. No need any extra manual setup[^4]
+3. Come with Gitlab repo
+4. In case if needed more minutes[^5]
+
+^ Q: Git repo
+
+[^3]: [Gitlab Pricing](https://about.gitlab.com/pricing/)
+
+[^4]: [Features Comparison](https://about.gitlab.com/pricing/gitlab-com/feature-comparison/)
+
+[^5]: [Install and Register your own runner](https://docs.gitlab.com/runner/register/index.html)
+
+---
+
 
 ## Basic Configuration
 
@@ -92,7 +93,7 @@ stages:
   - production
 
 services:
-    - docker:dind
+    - docker:dind #docker engine and docker compose
 
 variables:
   IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_SHA
@@ -230,4 +231,8 @@ deploy_production:
 
 ---
 
-# 🥳
+![](bg-birthday.jpg)
+
+![inline](ic_docker.png)
+
+# 🥳 🥳 🥳
