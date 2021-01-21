@@ -13,7 +13,7 @@
     "express": "^4.16.3",
     "fbemitter": "^2.1.1",
     "helmet": "^3.13.0",
-    "socket.io": "^2.1.1"
+    "socket.io": "^2.4.0"
   },
   "scripts": {
     "start": "nodemon index.js"
